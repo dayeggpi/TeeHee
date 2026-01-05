@@ -1,0 +1,162 @@
+Privacy Policy
+==============
+
+Published: January 2026
+Updated: January 2026
+Author: dayeggpi
+
+dayeggpi built TeeHee as a free, open-source application. This Software is provided by dayeggpi and is intended for use as is.
+
+This page informs you of our policies regarding the collection, use, and disclosure of personal information when you use TeeHee.
+
+
+Summary
+-------
+
+TeeHee is designed with privacy in mind. In short:
+- We do NOT collect any personal data
+- We do NOT transmit any data to external servers
+- All your data stays on YOUR computer
+- We do NOT use analytics or tracking
+- We do NOT display advertisements
+
+
+Information Collection and Use
+------------------------------
+
+TeeHee does NOT collect any personal information.
+
+TeeHee does NOT:
+- Collect usage statistics
+- Track your typing or keystrokes beyond what's necessary for text expansion
+- Send any data to external servers
+- Use analytics services
+- Display advertisements
+- Require an account or registration
+- Require an internet connection to function
+
+
+Local Data Storage
+------------------
+
+TeeHee stores the following data LOCALLY on your computer:
+
+1. Triggers Database (triggers.json)
+   - Location: %APPDATA%\TeeHee\triggers.json (default) or custom location
+   - Contains: Your text expansion triggers (input/output pairs)
+   - Purpose: To provide text expansion functionality
+
+2. Settings File (settings.json)
+   - Location: %APPDATA%\TeeHee\settings.json
+   - Contains: Application preferences (trigger speed, custom database path)
+   - Purpose: To remember your preferences
+
+This data is:
+- Stored only on your local computer
+- Never transmitted to us or any third party
+- Fully under your control
+- Deletable at any time by you
+
+
+Clipboard Access
+----------------
+
+TeeHee accesses the Windows clipboard in the following situations:
+
+1. When you use the {{clipboard}} placeholder in a trigger
+   - TeeHee reads the current clipboard content to insert it
+   
+2. When performing text expansion
+   - TeeHee temporarily uses the clipboard to paste expanded text
+   - Your previous clipboard content is restored after expansion
+
+We do NOT:
+- Store clipboard history
+- Transmit clipboard content anywhere
+- Log or record clipboard content
+
+
+Keyboard Monitoring
+-------------------
+
+TeeHee uses a system-wide keyboard hook to detect when you type trigger text. This is necessary for the core functionality of text expansion.
+
+Important:
+- Keystrokes are processed locally in real-time
+- We do NOT log, store, or record your keystrokes
+- We do NOT transmit keystroke data anywhere
+- The keyboard buffer only holds the last few characters needed to detect triggers
+- The buffer is cleared after each trigger expansion
+
+
+Third-Party Services
+--------------------
+
+TeeHee does NOT integrate with any third-party services.
+
+TeeHee does NOT:
+- Connect to the internet for any functionality
+- Use cloud storage
+- Integrate with external APIs
+- Use third-party analytics
+- Display third-party content
+
+
+Data Security
+-------------
+
+Your data security is ensured by:
+- All data stored locally on your computer
+- No network transmission of any data
+- No external dependencies for core functionality
+
+The security of your data depends on:
+- Your computer's security
+- Your Windows user account protection
+- Your backup practices
+
+
+Data Export and Deletion
+------------------------
+
+You have full control over your data:
+
+Export:
+- Use the Export feature in Settings to backup your triggers
+- Manually copy the JSON files from %APPDATA%\TeeHee\
+
+Delete:
+- Use the app to delete individual triggers
+- Delete the entire %APPDATA%\TeeHee\ folder to remove all data
+- Uninstalling the app does NOT automatically delete your data (so you can reinstall without losing triggers)
+
+
+Children's Privacy
+------------------
+
+TeeHee does not collect any personal information from anyone, including children under 13.
+
+
+Open Source
+-----------
+
+TeeHee is open source. You can review the source code to verify our privacy practices:
+- GitHub: https://github.com/dayeggpi/TeeHee/
+
+
+Changes to This Privacy Policy
+------------------------------
+
+We may update this Privacy Policy from time to time. Changes will be posted on our website or GitHub repository.
+
+Since we don't collect any data, changes to this policy are unlikely to affect you.
+
+
+Contact Us
+----------
+
+If you have any questions about this Privacy Policy, please contact us:
+- GitHub: https://github.com/dayeggpi
+
+
+By using TeeHee, you acknowledge that you have read and understood this Privacy Policy.

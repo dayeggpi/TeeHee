@@ -1,0 +1,161 @@
+End User License Agreement (EULA)
+==================================
+
+Published: January 2026
+Updated: January 2026
+Author: dayeggpi
+
+Please read this End User License Agreement ("EULA", "License Agreement") before downloading and using the Software.
+
+By downloading and using the Software, you agree, without reservation, to be bound by the terms of this EULA. If you do not agree with the terms of this EULA, please do not download and use the Software.
+
+
+1. Definitions
+--------------
+
+"We", "us", or "dayeggpi": The developer(s) of TeeHee.
+
+"Software": TeeHee, a text expander application for Windows.
+
+"Documentation": Information about the Software, its features, and system requirements as made available on our website or GitHub repository.
+
+"You": You, the final user of the Software.
+
+"Use": The access, download, install, copy, or benefit from using the Software.
+
+
+2. License Grant
+----------------
+
+We grant you a free, non-exclusive, worldwide license to Use the Software in accordance with this EULA.
+
+The Software is provided free of charge. You may:
+- Use the Software for personal or commercial purposes
+- Install the Software on any number of devices you own or control
+- Make copies of the Software for backup purposes
+- Share the Software with others, provided this EULA accompanies it
+
+We reserve all rights not expressly granted to you.
+
+
+3. Restrictions
+---------------
+
+You shall not:
+- Sell, rent, lease, or sublicense the Software for profit
+- Remove or alter any copyright notices, trademarks, or other proprietary notices
+- Use the Software for any unlawful or illegal activity
+- Distribute modified versions of the Software under the same name without permission
+- Claim authorship or ownership of the Software
+
+
+4. Intellectual Property
+------------------------
+
+We remain the owner of any intellectual property rights with respect to the Software. Your Use of the Software does not grant you any ownership rights.
+
+The Software may contain open-source components subject to their respective licenses. You shall adhere to the terms and conditions of those licenses.
+
+
+5. Updates
+----------
+
+We may provide Updates to the Software from time to time. Updates are provided free of charge.
+
+We are not obligated to provide Updates, support, or maintenance.
+
+We may discontinue the Software at any time without notice.
+
+
+6. Data and Privacy
+-------------------
+
+Please refer to our Privacy Policy for information about data collection and use.
+
+In summary: TeeHee stores all data locally on your computer. We do not collect, transmit, or store any personal data.
+
+
+7. Disclaimer of Warranties
+---------------------------
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+WE DISCLAIM ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO:
+- MERCHANTABILITY
+- FITNESS FOR A PARTICULAR PURPOSE
+- NON-INFRINGEMENT
+- ACCURACY OR RELIABILITY
+
+You Use the Software at your own risk. The entire risk as to satisfactory quality, performance, and accuracy is with you.
+
+We do not warrant that:
+- The Software will meet your requirements
+- The Software will be uninterrupted, timely, secure, or error-free
+- Any errors in the Software will be corrected
+
+
+8. Limitation of Liability
+--------------------------
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WE SHALL NOT BE LIABLE FOR ANY:
+- Direct, indirect, incidental, special, consequential, or punitive damages
+- Loss of profits, data, use, goodwill, or other intangible losses
+- Damages resulting from your use or inability to use the Software
+- Damages resulting from any content obtained from or through the Software
+
+This limitation applies regardless of the legal theory (contract, tort, negligence, strict liability, or otherwise) and even if we have been advised of the possibility of such damages.
+
+
+9. Indemnification
+------------------
+
+You agree to defend, indemnify, and hold harmless dayeggpi from any claims, damages, losses, liabilities, costs, and expenses (including attorney's fees) arising from:
+- Your use of the Software
+- Your violation of this EULA
+- Your violation of any third-party rights
+
+
+10. Termination
+---------------
+
+This EULA is effective until terminated.
+
+Your rights under this EULA will terminate automatically without notice if you fail to comply with any of its terms.
+
+Upon termination, you shall cease all use of the Software and destroy all copies.
+
+
+11. Changes to This EULA
+------------------------
+
+We may update this EULA from time to time. Changes will be posted on our website or GitHub repository.
+
+Your continued use of the Software after changes are posted constitutes your acceptance of the updated EULA.
+
+
+12. Severability
+----------------
+
+If any provision of this EULA is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.
+
+
+13. Entire Agreement
+--------------------
+
+This EULA constitutes the entire agreement between you and us regarding the Software and supersedes all prior agreements and understandings.
+
+
+14. Governing Law
+-----------------
+
+This EULA shall be governed by and construed in accordance with the laws of the jurisdiction in which the developer resides, without regard to conflict of law principles.
+
+
+15. Contact
+-----------
+
+If you have any questions about this EULA, please contact us:
+- GitHub: https://github.com/dayeggpi
+
+
+By using TeeHee, you acknowledge that you have read, understood, and agree to be bound by this End User License Agreement.
