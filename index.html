@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- v1.0.0.0 / website v1.0.1.0 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeeHee - Type Less, Do More</title>
@@ -10,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
-<!-- v1.0.0.0 / website v1.0.0.0 -->
-<!-- OpenGraph Meta Tags -->
+  
     <meta property="og:title" content="TeeHee - Type Less, Do More">
     <meta property="og:description" content="A free, lightweight text expander for Windows. Create shortcuts for frequently typed text and boost your productivity.">
     <meta property="og:type" content="website">
@@ -21,20 +21,17 @@
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="TeeHee">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TeeHee - Type Less, Do More">
     <meta name="twitter:description" content="I build things for the web. Passionate about clean code, minimal design, and creating digital experiences that matter.">
     <meta name="twitter:image" content="https://dayeggpi.github.io/TeeHee/og-image.jpg">
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="TeeHee - A free, lightweight text expander for Windows. Create shortcuts for frequently typed text and boost your productivity.">
     <meta name="keywords" content="">
     <meta name="author" content="TeeHee">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dayeggpi.github.io/TeeHee/">
     
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -49,15 +46,14 @@
     </script>
 	
 	
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BW0Y9FN2QW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BW0Y9FN2QW"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-  gtag('config', 'G-BW0Y9FN2QW');
-</script>
+	  gtag('config', 'G-BW0Y9FN2QW');
+	</script>
 
 
     <style>
@@ -84,10 +80,9 @@
             background: var(--bg-dark);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -173,7 +168,6 @@
             font-size: 1.1rem;
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -239,7 +233,6 @@
             flex-wrap: wrap;
         }
 
-        /* ----- CAROUSEL STYLES START ----- */
         .hero-image {
             position: relative;
             width: 100%;
@@ -279,11 +272,10 @@
         .gallery-slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Keeps aspect ratio */
+            object-fit: contain; 
             background: var(--bg-card);
         }
 
-        /* Carousel Dots */
         .gallery-nav {
             display: flex;
             justify-content: center;
@@ -305,7 +297,6 @@
             transform: scale(1.2);
         }
 
-        /* Hover Navigation Arrows (Optional, integrated into modal mostly) */
         .gallery-arrow {
             position: absolute;
             top: 50%;
@@ -323,9 +314,7 @@
         .gallery-container:hover .gallery-arrow { opacity: 1; }
         .gallery-prev { left: 10px; }
         .gallery-next { right: 10px; }
-        /* ----- CAROUSEL STYLES END ----- */
 
-        /* ----- MODAL STYLES START ----- */
         .modal {
             display: none;
             position: fixed;
@@ -379,7 +368,6 @@
             cursor: pointer;
         }
 
-        /* Modal Navigation Buttons */
         .modal-nav-btn {
             position: absolute;
             top: 50%;
@@ -407,9 +395,7 @@
             color: #ccc;
             text-align: center;
         }
-        /* ----- MODAL STYLES END ----- */
 
-        /* Stats */
         .stats {
             display: flex;
             gap: 3rem;
@@ -429,7 +415,6 @@
             font-size: 0.9rem;
         }
 
-        /* Features Section */
         .features {
             padding: 6rem 2rem;
             background: var(--bg-card);
@@ -500,7 +485,6 @@
             font-size: 0.95rem;
         }
 
-        /* Demo Section */
         .demo {
             padding: 6rem 2rem;
         }
@@ -567,7 +551,6 @@
             padding: 2rem;
         }
 
-        /* Placeholders Section */
         .placeholders {
             padding: 6rem 2rem;
             background: var(--bg-card);
@@ -650,7 +633,6 @@
             color: var(--text-muted);
         }
 
-        /* Use Cases Section */
         .use-cases {
             padding: 6rem 2rem;
         }
@@ -680,7 +662,6 @@
             font-size: 0.95rem;
         }
 
-        /* Download Section */
         .download {
             padding: 6rem 2rem;
             background: var(--bg-card);			
@@ -707,7 +688,6 @@
             text-align: center;
         }
 
-        /* Download Selector */
         .download-selector {
             background: var(--bg-dark);
             border-radius: 16px;
@@ -820,7 +800,6 @@
             font-size: 0.85rem;
         }
 
-        /* Footer */
         footer {
             padding: 3rem 2rem;
             border-top: 1px solid var(--border);
@@ -853,7 +832,6 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -912,22 +890,148 @@
                 gap: 1.5rem;
             }
         }
+		
+		
+
+
+.mobile-menu-btn {
+    display: none; 
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+    .mobile-menu-btn {
+        display: block; 
+    }
+
+    .nav-links {
+        display: flex !important; 
+        
+        position: fixed;
+        top: 70px; 
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+    
+    .nav-links .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 8rem 1.5rem 2rem; 
+        min-height: auto;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .features-grid, 
+    .placeholder-showcase, 
+    .cases-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    }
+    
+    .demo-content {
+        grid-template-columns: 1fr; 
+    }
+    
+    .demo-image {
+        order: -1; 
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .download-card {
+        padding: 1.5rem;
+    }
+
+
+    .selector-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: left;
+    }
+    
+    .selector-options {
+        width: 100%;
+    }
+    
+    .selector-btn {
+        flex: 1; 
+        text-align: center;
+    }
+    
+    .download-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+		
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#home" class="logo">✨ Tee<span>Hee</span></a>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How it Works</a>
-            <a href="#placeholders">Placeholders</a>
-            <a href="#whoisitfor">Who is it for?</a>
-            <a href="#download" class="btn btn-primary">Download Free</a>
-        </div>
-    </nav>
+	<nav>
+		<a href="#home" class="logo">✨ Tee<span>Hee</span></a>
+		
+		<button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<line x1="3" y1="12" x2="21" y2="12"></line>
+				<line x1="3" y1="6" x2="21" y2="6"></line>
+				<line x1="3" y1="18" x2="21" y2="18"></line>
+			</svg>
+		</button>
 
-    <!-- Hero Section -->
+		<div class="nav-links" id="navLinks">
+			<a href="#features" onclick="toggleMobileMenu()">Features</a>
+			<a href="#how-it-works" onclick="toggleMobileMenu()">How it Works</a>
+			<a href="#placeholders" onclick="toggleMobileMenu()">Placeholders</a>
+			<a href="#whoisitfor" onclick="toggleMobileMenu()">Who is it for?</a>
+			<a href="#download" class="btn btn-primary" onclick="toggleMobileMenu()">Download Free</a>
+		</div>
+	</nav>
+
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
@@ -966,18 +1070,15 @@
             </div>
             
             <div class="hero-image">
-                <!-- Gallery Container -->
                 <div class="gallery-container" id="hero-gallery">
                     <button class="gallery-arrow gallery-prev" onclick="moveSlide(-1)">❮</button>
                     <button class="gallery-arrow gallery-next" onclick="moveSlide(1)">❯</button>
                     
-                    <!-- Slide 1 -->
                     <div class="gallery-slide active">
                         <img src="TeeHee_app.png" 
                              alt="TeeHee Main Window" 
                              onclick="openModal(0)">
                     </div>
-                    <!-- Slide 2 -->
                     <div class="gallery-slide">
                         <img src="TeeHee_settings.png" 
                              alt="Placeholders view" 
@@ -985,7 +1086,6 @@
                     </div>
                 </div>
                 
-                <!-- Dots Navigation -->
                 <div class="gallery-nav" id="gallery-dots">
                     <span class="gallery-dot active" onclick="currentSlide(0)"></span>
                     <span class="gallery-dot" onclick="currentSlide(1)"></span>
@@ -994,7 +1094,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
@@ -1051,7 +1150,6 @@
         </div>
     </section>
 
-    <!-- How it Works Section -->
     <section class="demo" id="how-it-works">
         <div class="container">
             <div class="demo-content">
@@ -1095,7 +1193,6 @@
                     </ul>
                 </div>
                 <div class="demo-image">
-                    <!-- Replace with actual GIF/video -->
                     <div class="demo-image-placeholder">
                         <img src="TeeHee_demo.gif"  />
                     </div>
@@ -1104,7 +1201,6 @@
         </div>
     </section>
 
-    <!-- Improved Placeholders Section -->
     <section class="placeholders" id="placeholders">
         <div class="container">
             <div class="section-header">
@@ -1113,7 +1209,6 @@
             </div>
             
             <div class="placeholder-showcase">
-                <!-- Group 1: Time & Date -->
                 <div class="placeholder-category">
                     <h3>📅 Time & Date</h3>
                     <div class="placeholder-list">
@@ -1136,7 +1231,6 @@
                     </div>
                 </div>
 
-                <!-- Group 2: System -->
                 <div class="placeholder-category">
                     <h3>💻 System & Clip</h3>
                     <div class="placeholder-list">
@@ -1155,7 +1249,6 @@
                     </div>
                 </div>
 
-                <!-- Group 3: Utility -->
                 <div class="placeholder-category">
                     <h3>🔧 Utility</h3>
                     <div class="placeholder-list">
@@ -1177,7 +1270,6 @@
         </div>
     </section>
 
-    <!-- Use Cases Section (New) -->
     <section class="use-cases" id="whoisitfor">
         <div class="container">
             <div class="section-header">
@@ -1204,7 +1296,6 @@
         </div>
     </section>
 	
-    <!-- Download Section -->
     <section class="download" id="download">
         <div class="container">
             <div class="download-card">
@@ -1271,7 +1362,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>Made with ❤️ by <a href="https://github.com/dayeggpi" target="_blank">dayeggpi</a> · Free · <a href="https://github.com/dayeggpi/teehee" target="_blank">View on GitHub</a></p>
         <div class="footer-links">
@@ -1281,7 +1371,6 @@
     </footer>
 
 
-    <!-- MODAL MARKUP -->
     <div id="imageModal" class="modal" onclick="closeModal()">
         <span class="modal-close" onclick="closeModal()">&times;</span>
         <button class="modal-nav-btn modal-prev" onclick="changeModalImage(-1, event)">❮</button>
@@ -1292,7 +1381,6 @@
 
 
         <script>
-        // --- 1. DOWNLOAD CONFIGURATION ---
         const downloads = {
             "x64-self-contained-portable": { 
                 filename: "TeeHee-1.0.0-x64-self-contained.zip", 
@@ -1404,23 +1492,19 @@
             }
         };
 
-        // Current selection
         let currentSelection = {
             arch: 'x64',
             runtime: 'framework',
             package: 'portable'
         };
 
-        // Initialize selector buttons
         function initSelectors() {
             document.querySelectorAll('.selector-options').forEach(optionGroup => {
                 optionGroup.querySelectorAll('.selector-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
-                        // Update active state
                         optionGroup.querySelectorAll('.selector-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         
-                        // Update selection
                         const groupId = optionGroup.id;
                         const value = btn.dataset.value;
                         
@@ -1434,7 +1518,6 @@
             });
         }
 
-        // Update download result display
         function updateDownloadResult() {
             const key = `${currentSelection.arch}-${currentSelection.runtime}-${currentSelection.package}`;
             const download = downloads[key];
@@ -1444,20 +1527,16 @@
                 document.getElementById('download-filesize').textContent = download.size;
                 document.getElementById('download-requirements').innerHTML = download.requirements;
                 
-                // UPDATED: Use the specific URL from the config object
                 document.getElementById('download-btn').href = download.url;
             }
         }
 
-        // --- 2. CAROUSEL & MODAL LOGIC ---
         
-        // ... [Rest of the carousel/modal code remains unchanged] ...
         
         let slideIndex = 0;
         let slideInterval;
         let modalCurrentIndex = 0;
 
-        // Start automatic carousel
         function startCarousel() {
             if (slideInterval) clearInterval(slideInterval);
             slideInterval = setInterval(() => {
@@ -1489,7 +1568,6 @@
             startCarousel();
         }
 
-        // --- Modal Logic ---
 
         function openModal(index) {
             const modal = document.getElementById("imageModal");
@@ -1526,13 +1604,11 @@
             startCarousel();
         }
         
-        // --- 3. STANDARD NAVIGATION LOGIC ---
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 
-                // Safety check: ensure it's a valid ID selector
                 if (href && href.startsWith('#') && href.length > 1) {
                     const target = document.querySelector(href);
                     if (target) {
@@ -1548,8 +1624,12 @@
 
 
 
+		function toggleMobileMenu() {
+			const navLinks = document.getElementById('navLinks');
+			navLinks.classList.toggle('active');
+		
+		}
 
-        // Add scroll effect to nav
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
@@ -1559,7 +1639,6 @@
             }
         });
 
-        // Keydown listener for modal
         document.addEventListener('keydown', function(event) {
             const modal = document.getElementById("imageModal");
             if (modal.style.display === "flex") {
@@ -1575,7 +1654,6 @@
             }
         });
 
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             initSelectors();
             updateDownloadResult();
