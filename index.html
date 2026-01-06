@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<!-- v0.9.2.0 / web v1.0.0.0-->
+	<!-- v0.9.2.0 / web v1.0.1.0-->
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
   
     <meta property="og:title" content="TeeHee - Type less, do more">
@@ -533,7 +533,7 @@ nav {
         .demo-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 4rem 0.5rem;
             align-items: center;
         }
 
@@ -577,7 +577,7 @@ nav {
             stroke: white;
         }
 
-        .demo-image-placeholder {
+        /*.demo-image-placeholder {
             width: 100%;
             aspect-ratio: 4/3;
             background: var(--bg-card);
@@ -590,7 +590,29 @@ nav {
             font-size: 0.9rem;
             text-align: center;
             padding: 2rem;
-        }
+        }*/
+		
+.demo-image-placeholder {
+    width: 120%;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+}
+.demo-image-placeholder img {
+    max-width: 100%;
+    height: auto; 
+    display: block;
+
+}
+
+
+
+		
 
         .placeholders {
             padding: 6rem 2rem;
@@ -1027,7 +1049,29 @@ nav {
         order: -1; 
         margin-bottom: 2rem;
     }
+    .demo-image-placeholder {
+	    width: 100%;
+		padding: 1rem;
+    }	
+    .demo-image-placeholder img {
+        max-height: 250px; 
+        max-width: 80%; 
+        width: auto;
+        margin: 0 auto;
+
+    }
+	
 }
+
+
+
+
+    
+    
+
+
+
+
 
 
 @media (max-width: 600px) {
@@ -1406,24 +1450,24 @@ nav {
                     <div class="selector-row">
                         <span class="selector-label">Runtime</span>
                         <div class="selector-options" id="runtime-options">
-                            <button class="selector-btn active" data-value="framework">Requires .NET 8</button>
-                            <button class="selector-btn" data-value="self-contained">Self-contained</button>
+                            <button class="selector-btn" data-value="framework">Requires .NET 8</button>
+                            <button class="selector-btn active" data-value="self-contained">Self-contained</button>
                         </div>
                     </div>
                     <div class="selector-row">
                         <span class="selector-label">Package</span>
                         <div class="selector-options" id="package-options">
-                            <button class="selector-btn active" data-value="portable">Portable (ZIP)</button>
-                            <button class="selector-btn" data-value="installer">Installer (EXE)</button>
+                            <button class="selector-btn" data-value="portable">Portable (ZIP)</button>
+                            <button class="selector-btn active" data-value="installer">Installer (EXE)</button>
                             <button class="selector-btn" data-value="msi">MSI Package</button>
                         </div>
                     </div>
                     
                     <div class="download-result">
-                        <div class="filename" id="download-filename">TeeHee-0.9.2-x64.zip</div>
-                        <div class="filesize" id="download-filesize">~107 KB</div>
+                        <div class="filename" id="download-filename">TeeHee-0.9.2-x64-self-contained-setup.exe</div>
+                        <div class="filesize" id="download-filesize">~50 MB</div>
                         <div class="requirements" id="download-requirements">
-                            <strong>Requires <a href='https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime' target='_blank' style='color: var(--primary);'>.NET 8 Desktop Runtime</a></strong> to be installed on your computer.
+                            <strong>RECOMMENDED VERSION. No additional requirements.</strong> Everything is included in the installer.
                         </div>
                         <a href="#" class="btn btn-primary btn-large" id="download-btn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1485,7 +1529,7 @@ nav {
                 filename: "TeeHee-0.9.2-x64-self-contained-setup.exe", 
                 url: "https://github.com/dayeggpi/TeeHee/releases/download/v0.9.2.0/TeeHee-0.9.2-x64-self-contained-setup.exe",
                 size: "~50 MB",
-                requirements: "<strong>No additional requirements.</strong> Everything is included in the installer."
+                requirements: "<strong>RECOMMENDED VERSION. No additional requirements.</strong> Everything is included in the installer."
             },
             "x64-self-contained-msi": { 
                 filename: "TeeHee-0.9.2-x64-self-contained.msi", 
@@ -1587,8 +1631,8 @@ nav {
 
         let currentSelection = {
             arch: 'x64',
-            runtime: 'framework',
-            package: 'portable'
+            runtime: 'self-contained',
+            package: 'installer'
         };
 
         function initSelectors() {
