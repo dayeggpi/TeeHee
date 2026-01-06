@@ -1,0 +1,71 @@
+<Window x:Class="TeeHee.InfoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Info"
+        Width="440"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False">
+    
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="4" BlurRadius="20" Opacity="0.15"/>
+        </Border.Effect>
+        
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0" Margin="0,0,0,16">
+                <TextBlock Text="How Categories Work" 
+                           FontSize="16" 
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextBrush}"/>
+                <Button Content="X" 
+                        Style="{StaticResource IconButton}"
+                        HorizontalAlignment="Right"
+                        Click="Close_Click"/>
+            </Grid>
+            
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Adding Categories" 
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextBrush}"
+                           FontSize="13"
+                           Margin="0,0,0,6"/>
+                <TextBlock Text="Simply type a new category name when creating or editing a trigger. It will be automatically added to the list."
+                           Foreground="{DynamicResource TextMutedBrush}"
+                           FontSize="12"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,16"/>
+                
+                <TextBlock Text="Removing Categories" 
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextBrush}"
+                           FontSize="13"
+                           Margin="0,0,0,6"/>
+                <TextBlock Text="Categories are removed automatically when no triggers use them. Delete a category (by erasing the text in the Category input of a trigger) or reassign triggers to another category to remove it."
+                           Foreground="{DynamicResource TextMutedBrush}"
+                           FontSize="12"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+            
+            <Button Grid.Row="2" 
+                    Content="Got it" 
+                    Style="{StaticResource PrimaryButton}"
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0"
+                    Click="Close_Click"/>
+        </Grid>
+    </Border>
+</Window>

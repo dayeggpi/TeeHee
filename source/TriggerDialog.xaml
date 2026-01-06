@@ -1,0 +1,142 @@
+<Window x:Class="TeeHee.TriggerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+        Title="Trigger"
+        Width="480"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False">
+    
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="4" BlurRadius="20" Opacity="0.15"/>
+        </Border.Effect>
+        
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0" Margin="0,0,0,20">
+                <TextBlock x:Name="DialogTitle" 
+                           Text="New Trigger" 
+                           FontSize="18" 
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextBrush}"/>
+                <Button Content="X" 
+                        Style="{StaticResource IconButton}"
+                        HorizontalAlignment="Right"
+                        Click="Cancel_Click"/>
+            </Grid>
+
+
+            <StackPanel Grid.Row="1">
+				<!-- Trigger Input -->
+				<TextBlock Text="Trigger" 
+						   Foreground="{DynamicResource TextMutedBrush}" 
+						   FontSize="12" 
+						   FontWeight="Medium"
+						   Margin="0,0,0,6"/>
+				<Border Background="{DynamicResource SurfaceBrush}"
+						BorderBrush="{DynamicResource BorderBrush}"
+						BorderThickness="1"
+						CornerRadius="6"
+						Margin="0,0,0,16">
+					<emoji:RichTextBox x:Name="InputTextBox"
+								 Background="Transparent"
+								 Foreground="{DynamicResource TextBrush}"
+								 BorderThickness="0"
+								 Padding="10,8"
+								 FontFamily="Segoe UI Emoji, Consolas"
+								 FontSize="13"
+								 Height="36"
+								 VerticalScrollBarVisibility="Hidden">
+						<RichTextBox.Resources>
+							<Style TargetType="Paragraph">
+								<Setter Property="Margin" Value="0"/>
+							</Style>
+						</RichTextBox.Resources>
+					</emoji:RichTextBox>
+				</Border>
+
+				<!-- Category stays as ComboBox -->
+				<TextBlock Text="Category (optional)" 
+						   Foreground="{DynamicResource TextMutedBrush}" 
+						   FontSize="12" 
+						   FontWeight="Medium"
+						   Margin="0,0,0,6"/>
+				<ComboBox x:Name="CategoryComboBox"
+						  IsEditable="True"
+						  Margin="0,0,0,16"/>
+
+				<!-- Expansion Output -->
+				<TextBlock Text="Expansion" 
+						   Foreground="{DynamicResource TextMutedBrush}" 
+						   FontSize="12" 
+						   FontWeight="Medium"
+						   Margin="0,0,0,6"/>
+				<Border Background="{DynamicResource SurfaceBrush}"
+						BorderBrush="{DynamicResource BorderBrush}"
+						BorderThickness="1"
+						CornerRadius="6"
+						Margin="0,0,0,8">
+					<emoji:RichTextBox x:Name="OutputTextBox"
+								 Background="Transparent"
+								 Foreground="{DynamicResource TextBrush}"
+								 BorderThickness="0"
+								 Padding="10,8"
+								 FontFamily="Segoe UI Emoji, Segoe UI"
+								 FontSize="13"
+								 Height="100"
+								 AcceptsReturn="True"
+								 VerticalScrollBarVisibility="Auto">
+						<RichTextBox.Resources>
+							<Style TargetType="Paragraph">
+								<Setter Property="Margin" Value="0"/>
+							</Style>
+						</RichTextBox.Resources>
+					</emoji:RichTextBox>
+				</Border>
+                <TextBlock x:Name="ErrorMessage" 
+                           Foreground="{DynamicResource DangerBrush}"
+                           FontSize="12"
+                           Visibility="Collapsed"
+                           Margin="0,0,0,8"/>				
+            </StackPanel>
+
+
+              
+            
+            <Grid Grid.Row="2" Margin="0,16,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Grid.Column="1" 
+                        Content="Cancel" 
+                        Style="{StaticResource SecondaryButton}"
+                        Width="90"
+                        Click="Cancel_Click"
+                        Margin="0,0,10,0"/>
+                <Button x:Name="SaveButton"
+                        Grid.Column="2" 
+                        Content="Save" 
+                        Style="{StaticResource PrimaryButton}"
+                        Width="90"
+                        Click="Save_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
