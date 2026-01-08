@@ -7,7 +7,7 @@ using Clipboard = System.Windows.Clipboard;
 using Brush = System.Windows.Media.Brush;
 using Color = System.Windows.Media.Color;
 using ColorConverter = System.Windows.Media.ColorConverter;
-
+using System.ComponentModel;
 namespace TeeHee;
 
 public partial class MainWindow : Window
@@ -17,6 +17,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Closing += MainWindow_Closing;		
         LoadSettings();
         LoadCategories();
         RefreshTriggerList();
@@ -27,6 +28,26 @@ public partial class MainWindow : Window
 
     #region Theme Management
 
+
+	private void MainWindow_Closing(object? sender, CancelEventArgs e)
+	{
+		if (TriggerDatabase.Instance.Settings.MinimizeToTrayOnClose)
+		{
+			e.Cancel = true;
+			Hide();
+		} else
+			{
+			
+			System.Windows.Application.Current.Shutdown();
+		}
+	}
+
+	private void MinimizeToTrayCheckBox_Changed(object sender, RoutedEventArgs e)
+	{
+		TriggerDatabase.Instance.Settings.MinimizeToTrayOnClose = MinimizeToTrayCheckBox.IsChecked ?? true;
+		TriggerDatabase.Instance.Save();
+	}
+	
     private void Theme_Click(object sender, RoutedEventArgs e)
     {
         _currentTheme = _currentTheme switch
