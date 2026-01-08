@@ -9,7 +9,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <AssemblyName>TeeHee</AssemblyName>
-    <Version>0.9.2</Version>
+    <Version>0.9.3</Version>
     <Company>TeeHee</Company>
     <Product>TeeHee Text Expander</Product>
     <Description>A simple text expander for Windows</Description>
@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Emoji.Wpf" Version="0.3.4" />
+
   </ItemGroup>
 
 </Project>
