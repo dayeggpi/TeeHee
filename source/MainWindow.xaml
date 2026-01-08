@@ -372,6 +372,13 @@
                                               Style="{StaticResource ModernCheckBox}"
                                               Checked="StartupCheckBox_Changed"
                                               Unchecked="StartupCheckBox_Changed"/>
+                                    <CheckBox x:Name="MinimizeToTrayCheckBox" 
+                                            Content="Minimize to tray when closing window" 
+                                            IsChecked="{Binding Source={x:Static local:TriggerDatabase.Instance}, Path=Settings.MinimizeToTrayOnClose}"
+                                            Style="{StaticResource ModernCheckBox}"
+                                            Checked="MinimizeToTrayCheckBox_Changed"
+                                            Unchecked="MinimizeToTrayCheckBox_Changed"
+                                            Margin="0,8,0,0"/>    
                                 </StackPanel>
                             </Border>
                             
