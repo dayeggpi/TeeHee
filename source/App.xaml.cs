@@ -47,6 +47,7 @@ public partial class App : System.Windows.Application
         _trayIconManager.OnToggleRequested += ToggleEnabled;
         _trayIconManager.Initialize();
         System.Diagnostics.Debug.WriteLine("Tray icon initialized");
+        ShowMainWindow();        
     }
 
     public void RefreshKeyboardHook()
