@@ -532,7 +532,7 @@
                                     
                                     <TextBlock Grid.Row="1" Grid.Column="0" Text="Version" 
                                                Foreground="{DynamicResource TextMutedBrush}" FontSize="12" Margin="0,6,0,0"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="0.9.3" 
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="0.9.4" 
                                                Foreground="{DynamicResource TextBrush}" FontSize="12" Margin="0,6,0,0"/>
                                     
                                     <TextBlock Grid.Row="2" Grid.Column="0" Text="Author" 
