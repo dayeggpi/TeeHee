@@ -12,13 +12,11 @@ public partial class App : System.Windows.Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        // Check for existing instance
         const string mutexName = "TeeHee_SingleInstance_Mutex";
         _mutex = new Mutex(true, mutexName, out bool createdNew);
 
         if (!createdNew)
         {
-            // Another instance is already running
             System.Windows.MessageBox.Show(
                 "TeeHee is already running.\n\nCheck your system tray for the TeeHee icon.",
                 "TeeHee Already Running",
@@ -33,8 +31,28 @@ public partial class App : System.Windows.Application
 
         System.Diagnostics.Debug.WriteLine("App starting...");
 
+        // Detect settings location before loading
+        var locationResult = TriggerDatabase.Instance.DetectSettingsLocation();
+        
+		if (locationResult == SettingsLocationResult.NotFound)
+		{
+			// Show dialog to let user choose location (hide cancel on first launch)
+			var dialog = new SettingsLocationDialog();
+			dialog.ShowCancelButton = false;
+            if (dialog.ShowDialog() == true)
+            {
+                TriggerDatabase.Instance.SetSettingsLocation(dialog.SelectedMode, dialog.CustomPath);
+            }
+            else
+            {
+                // User cancelled - default to AppData
+                TriggerDatabase.Instance.SetSettingsLocation(SettingsLocationMode.AppData);
+            }
+        }
+
         TriggerDatabase.Instance.Load();
         System.Diagnostics.Debug.WriteLine($"Loaded {TriggerDatabase.Instance.Triggers.Count} triggers");
+        System.Diagnostics.Debug.WriteLine($"Settings location: {TriggerDatabase.SettingsPath}");
 
         _keyboardHook = new KeyboardHook();
         _keyboardHook.IsEnabled = TriggerDatabase.Instance.Settings.IsEnabled;
@@ -47,7 +65,8 @@ public partial class App : System.Windows.Application
         _trayIconManager.OnToggleRequested += ToggleEnabled;
         _trayIconManager.Initialize();
         System.Diagnostics.Debug.WriteLine("Tray icon initialized");
-        ShowMainWindow();        
+
+        ShowMainWindow();
     }
 
     public void RefreshKeyboardHook()

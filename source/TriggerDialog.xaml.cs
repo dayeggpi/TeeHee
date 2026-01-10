@@ -14,7 +14,12 @@ public partial class TriggerDialog : Window
     public TriggerDialog(Trigger? existingTrigger, List<string> categories)
     {
         InitializeComponent();
-        
+
+InputTextBox.PreviewTextInput += InputTextBox_PreviewTextInput;
+InputTextBox.PreviewKeyDown += InputTextBox_PreviewKeyDown;
+System.Windows.DataObject.AddPastingHandler(InputTextBox, InputTextBox_Pasting);
+
+		
         _existingTrigger = existingTrigger;
         
         CategoryComboBox.Items.Clear();
@@ -37,43 +42,82 @@ public partial class TriggerDialog : Window
         Loaded += (s, e) => InputTextBox.Focus();
     }
 
-	private static string GetRichTextBoxText(Emoji.Wpf.RichTextBox rtb)
+
+
+// Add these methods:
+private void InputTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
 {
-    var sb = new System.Text.StringBuilder();
-    bool firstBlock = true;
-    
-    foreach (var block in rtb.Document.Blocks)
+    var currentText = new TextRange(InputTextBox.Document.ContentStart, InputTextBox.Document.ContentEnd).Text.TrimEnd('\r', '\n');
+    if (currentText.Length + e.Text.Length > 62)
     {
-        if (block is Paragraph paragraph)
+        e.Handled = true;
+    }
+}
+
+private void InputTextBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+{
+    if (e.Key == System.Windows.Input.Key.Space)
+    {
+        var currentText = new TextRange(InputTextBox.Document.ContentStart, InputTextBox.Document.ContentEnd).Text.TrimEnd('\r', '\n');
+        if (currentText.Length >= 62)
         {
-            if (!firstBlock)
-                sb.AppendLine();
-            
-            foreach (var inline in paragraph.Inlines)
-            {
-                if (inline is Run run)
-                {
-                    sb.Append(run.Text);
-                }
-                else
-                {
-                    // For emoji elements, try to get Text property via reflection
-                    var textProp = inline.GetType().GetProperty("Text");
-                    if (textProp != null)
-                    {
-                        var text = textProp.GetValue(inline) as string;
-                        if (!string.IsNullOrEmpty(text))
-                            sb.Append(text);
-                    }
-                }
-            }
-            
-            firstBlock = false;
+            e.Handled = true;
         }
     }
-    
-    return sb.ToString();
 }
+
+private void InputTextBox_Pasting(object sender, System.Windows.DataObjectPastingEventArgs e)
+{
+    if (e.DataObject.GetDataPresent(typeof(string)))
+    {
+        var pastedText = (string)e.DataObject.GetData(typeof(string));
+        var currentText = new TextRange(InputTextBox.Document.ContentStart, InputTextBox.Document.ContentEnd).Text.TrimEnd('\r', '\n');
+        if (currentText.Length + pastedText.Length > 62)
+        {
+            e.CancelCommand();
+        }
+    }
+}
+
+
+	private static string GetRichTextBoxText(Emoji.Wpf.RichTextBox rtb)
+	{
+		var sb = new System.Text.StringBuilder();
+		bool firstBlock = true;
+		
+		foreach (var block in rtb.Document.Blocks)
+		{
+			if (block is Paragraph paragraph)
+			{
+				if (!firstBlock)
+					sb.AppendLine();
+				
+				foreach (var inline in paragraph.Inlines)
+				{
+					if (inline is Run run)
+					{
+						sb.Append(run.Text);
+					}
+					else
+					{
+						// For emoji elements, try to get Text property via reflection
+						var textProp = inline.GetType().GetProperty("Text");
+						if (textProp != null)
+						{
+							var text = textProp.GetValue(inline) as string;
+							if (!string.IsNullOrEmpty(text))
+								sb.Append(text);
+						}
+					}
+				}
+				
+				firstBlock = false;
+			}
+		}
+		
+		return sb.ToString();
+	}
+	
     private static void SetRichTextBoxText(Emoji.Wpf.RichTextBox rtb, string text)
     {
         rtb.Text = text;
@@ -82,10 +126,20 @@ public partial class TriggerDialog : Window
 
     private void Save_Click(object sender, RoutedEventArgs e)
     {
+
+
+		
         var input = GetRichTextBoxText(InputTextBox).Trim();
         var output = GetRichTextBoxText(OutputTextBox);
         var category = CategoryComboBox.Text?.Trim() ?? "";
 
+		if (input.Length > 62)
+		{
+			ShowError("Trigger input cannot exceed 62 characters.");
+            InputTextBox.Focus();
+			return;
+		}
+		
         if (string.IsNullOrEmpty(input))
         {
             ShowError("Trigger cannot be empty.");

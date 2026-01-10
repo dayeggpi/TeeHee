@@ -123,12 +123,53 @@ public class KeyboardHook
                 return CallNextHookEx(_hookId, nCode, wParam, lParam);
             }
 
-            // Space - check trigger first, then reset
-            if (vkCode == 0x20)
-            {
-                _buffer = "";
-                return CallNextHookEx(_hookId, nCode, wParam, lParam);
-            }
+			if (vkCode == 0x20)
+			{
+				_buffer += ' ';
+				Log($"Buffer after space: '{_buffer}'");
+
+				// Keep buffer small
+				if (_buffer.Length > 50)
+					_buffer = _buffer.Substring(_buffer.Length - 50);
+
+				// Check triggers (same logic as for other characters)
+				var triggersOnSpace = TriggerDatabase.Instance.GetTriggerDictionary();
+				foreach (var kvp in triggersOnSpace)
+				{
+					if (_buffer.EndsWith(kvp.Key, StringComparison.Ordinal))
+					{
+						Log($"Trigger matched on space: {kvp.Key} -> {kvp.Value}");
+
+						int len = kvp.Key.Length;
+						string replacement = kvp.Value;
+						_buffer = "";
+						_isReplacing = true;
+
+						Task.Run(() =>
+						{
+							Thread.Sleep(50);
+
+							for (int i = 0; i < len; i++)
+							{
+								SendKey(0x08);
+								Thread.Sleep(10);
+							}
+
+							Thread.Sleep(20);
+
+							string processed = PlaceholderService.Process(replacement);
+							PasteText(processed);
+
+							Thread.Sleep(30);
+							_isReplacing = false;
+						});
+
+						return CallNextHookEx(_hookId, nCode, wParam, lParam);
+					}
+				}
+
+				return CallNextHookEx(_hookId, nCode, wParam, lParam);
+			}
 
             char? c = VkCodeToChar(vkCode);
             Log($"VkCode: {vkCode} (0x{vkCode:X2}) -> Char: {(c.HasValue ? $"'{c.Value}' (0x{((int)c.Value):X4})" : "null")}");

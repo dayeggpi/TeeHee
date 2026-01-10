@@ -17,7 +17,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        Closing += MainWindow_Closing;		
+		UpdateSettingsPathDisplay();
+        Closing += MainWindow_Closing;
         LoadSettings();
         LoadCategories();
         RefreshTriggerList();
@@ -26,8 +27,47 @@ public partial class MainWindow : Window
         ApplyTheme(_currentTheme);
     }
 
-    #region Theme Management
 
+
+
+	#region Settings management
+	private void UpdateSettingsPathDisplay()
+	{
+		SettingsPathTextBox.Text = TriggerDatabase.SettingsPath;
+		DatabaseLocationText.Text = TriggerDatabase.DatabasePath;
+	}
+
+	private void ChangeLocationButton_Click(object sender, RoutedEventArgs e)
+	{
+		var dialog = new SettingsLocationDialog();
+		if (dialog.ShowDialog() == true)
+		{
+			try
+			{
+				TriggerDatabase.Instance.MoveSettingsTo(dialog.SelectedMode, dialog.CustomPath);
+				UpdateSettingsPathDisplay();
+				
+				// Refresh trigger list and keyboard hook since database may have moved
+				RefreshTriggerList();
+				((App)Application.Current).RefreshKeyboardHook();
+				
+				var confirmDialog = new ConfirmDialog("Success", $"Location of settings and database files changed successfully.", "OK", false, null);
+				confirmDialog.Owner = this;
+				confirmDialog.ShowDialog();
+			}
+			catch (Exception ex)
+			{
+				var errorDialog = new ConfirmDialog("Error", $"Failed to change location: {ex.Message}", "OK", false, null);
+				errorDialog.Owner = this;
+				errorDialog.ShowDialog();
+			}
+		}
+	}	
+	#endregion
+
+
+
+	#region Closing window management
 
 	private void MainWindow_Closing(object? sender, CancelEventArgs e)
 	{
@@ -48,6 +88,10 @@ public partial class MainWindow : Window
 		TriggerDatabase.Instance.Save();
 	}
 	
+	#endregion
+	
+    #region Theme Management
+
     private void Theme_Click(object sender, RoutedEventArgs e)
     {
         _currentTheme = _currentTheme switch
@@ -357,17 +401,15 @@ public partial class MainWindow : Window
         SettingsScrollViewer.ScrollToTop();
     }
 
-    private void LoadSettings()
-    {
-        StartupCheckBox.IsChecked = StartupManager.IsRegisteredForStartup();
-        SpeedSlider.Value = TriggerDatabase.Instance.Settings.TriggerSpeed;
-        UpdateSpeedText();
-        DatabasePathText.Text = TriggerDatabase.DatabasePath;
-        DatabaseLocationText.Text = TriggerDatabase.DatabasePath;
-        SettingsPathText.Text = TriggerDatabase.SettingsPath;
-        
-        _currentTheme = TriggerDatabase.Instance.Settings.Theme ?? "Light";
-    }
+	private void LoadSettings()
+	{
+		StartupCheckBox.IsChecked = StartupManager.IsRegisteredForStartup();
+		SpeedSlider.Value = TriggerDatabase.Instance.Settings.TriggerSpeed;
+		UpdateSpeedText();
+		DatabaseLocationText.Text = TriggerDatabase.DatabasePath;
+		
+		_currentTheme = TriggerDatabase.Instance.Settings.Theme ?? "Light";
+	}
 
     private void StartupCheckBox_Changed(object sender, RoutedEventArgs e)
     {
@@ -490,59 +532,6 @@ public partial class MainWindow : Window
         }
     }
 
-    private void BrowseDatabase_Click(object sender, RoutedEventArgs e)
-    {
-        var dialog = new Microsoft.Win32.SaveFileDialog
-        {
-            Filter = "JSON files (*.json)|*.json",
-            FileName = "triggers.json",
-            Title = "Choose Database Location"
-        };
-
-        if (dialog.ShowDialog() == true)
-        {
-            var oldPath = TriggerDatabase.DatabasePath;
-
-            if (System.IO.File.Exists(oldPath) && oldPath != dialog.FileName)
-            {
-                if (System.IO.File.Exists(dialog.FileName))
-                {
-                    var confirmDialog = new ConfirmDialog(
-                        "File Exists",
-                        "A file already exists at this location. Overwrite it?",
-                        "Overwrite",
-                        true);
-                    confirmDialog.Owner = this;
-
-                    if (confirmDialog.ShowDialog() != true)
-                        return;
-
-                    System.IO.File.Delete(dialog.FileName);
-                }
-
-                System.IO.File.Move(oldPath, dialog.FileName);
-            }
-
-            TriggerDatabase.Instance.SetCustomDatabasePath(dialog.FileName);
-            TriggerDatabase.Instance.Load();
-            RefreshTriggerList();
-            DatabaseLocationText.Text = dialog.FileName;
-            DatabasePathText.Text = dialog.FileName;
-
-            ((App)Application.Current).RefreshKeyboardHook();
-        }
-    }
-
-    private void ResetDatabaseLocation_Click(object sender, RoutedEventArgs e)
-    {
-        TriggerDatabase.Instance.SetCustomDatabasePath(null);
-        TriggerDatabase.Instance.Load();
-        RefreshTriggerList();
-        DatabaseLocationText.Text = TriggerDatabase.DatabasePath;
-        DatabasePathText.Text = TriggerDatabase.DatabasePath;
-
-        ((App)Application.Current).RefreshKeyboardHook();
-    }
 
     private void Author_Click(object sender, RoutedEventArgs e)
     {

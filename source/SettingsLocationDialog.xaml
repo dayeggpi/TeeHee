@@ -1,0 +1,101 @@
+<Window x:Class="TeeHee.SettingsLocationDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Choose Settings Location" 
+        SizeToContent="Height"
+        Width="450"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="True">
+    <Border Background="{DynamicResource SurfaceBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="4" BlurRadius="20" Opacity="0.15"/>
+        </Border.Effect>		
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Choose Settings Location" 
+                       FontSize="16" FontWeight="Bold" 
+                       Foreground="{DynamicResource TextBrush}"
+                       Margin="0,0,0,10"/>
+            <TextBlock Grid.Row="1" Text="Where would you like to store your settings and database? (can be changed later)" 
+                       TextWrapping="Wrap" 
+                       Foreground="{DynamicResource TextBrush}"
+                       Margin="0,0,0,15"/>
+
+            <RadioButton x:Name="PortableRadio" Grid.Row="2" GroupName="Location" Margin="0,5" IsChecked="True"
+                         Foreground="{DynamicResource TextBrush}">
+                <StackPanel>
+                    <TextBlock Text="Portable (same folder as app)" FontWeight="SemiBold" Foreground="{DynamicResource TextBrush}"/>
+                    <TextBlock Text="Settings and Database travel with the application" Foreground="{DynamicResource TextMutedBrush}" FontSize="11"/>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton x:Name="AppDataRadio" Grid.Row="3" GroupName="Location" Margin="0,5"
+                         Foreground="{DynamicResource TextBrush}">
+                <StackPanel>
+                    <TextBlock Text="AppData (recommended for installed apps)" FontWeight="SemiBold" Foreground="{DynamicResource TextBrush}"/>
+                    <TextBlock Text="Settings and Database stored in Windows user profile" Foreground="{DynamicResource TextMutedBrush}" FontSize="11"/>
+                </StackPanel>
+            </RadioButton>
+
+			<RadioButton x:Name="CustomRadio" Grid.Row="4" GroupName="Location" Margin="0,5" 
+						 Checked="CustomRadio_Checked" Unchecked="CustomRadio_Unchecked"
+						 Foreground="{DynamicResource TextBrush}">
+				<StackPanel>
+					<TextBlock Text="Custom location for Database" FontWeight="SemiBold" Foreground="{DynamicResource TextBrush}"/>
+					<TextBlock Text="Database in custom folder, Settings will be in same folder as app" Foreground="{DynamicResource TextMutedBrush}" FontSize="11"/>
+					<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+						<TextBox x:Name="CustomPathTextBox" 
+								 Style="{StaticResource ModernTextBox}" 
+								 FontSize="11"
+								 Height="36"
+								 Padding="10,0"
+								 VerticalContentAlignment="Center"
+								 Width="280" 
+								 Margin="0,0,0,12"
+								 IsReadOnly="True"
+								 />
+
+
+                                    
+
+									
+						<Button x:Name="BrowseButton" 
+								Style="{StaticResource SecondaryButton}" 
+								Content="Browse..." 
+								Margin="5,0,0,0" 
+								Height="36"
+								Padding="10,0"
+								VerticalAlignment="Top"
+								IsEnabled="False" 
+								Click="BrowseButton_Click"/>				
+					</StackPanel>
+					<TextBlock x:Name="ErrorMessage" 
+							   Foreground="{DynamicResource DangerBrush}"
+							   FontSize="12"
+							   Visibility="Collapsed"
+							   Margin="0,8,0,0"/>				
+				</StackPanel>
+			</RadioButton>
+            
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+                <Button Content="OK" Width="80" Padding="5" Style="{StaticResource PrimaryButton}" Click="OkButton_Click" IsDefault="True"/>
+                <Button x:Name="CancelButton" Content="Cancel" Width="80" Padding="5" Style="{StaticResource SecondaryButton}" Margin="10,0,0,0" Click="CancelButton_Click" IsCancel="True"/>
+            </StackPanel>
+        </Grid>
+    </Border>		
+</Window>

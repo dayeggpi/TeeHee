@@ -378,10 +378,17 @@
                                             Style="{StaticResource ModernCheckBox}"
                                             Checked="MinimizeToTrayCheckBox_Changed"
                                             Unchecked="MinimizeToTrayCheckBox_Changed"
-                                            Margin="0,8,0,0"/>    
+                                            Margin="0,8,0,0"/>                                              
                                 </StackPanel>
                             </Border>
                             
+
+
+
+
+
+
+                                    
                             <!-- Speed Section -->
                             <TextBlock Text="Trigger Speed" 
                                        FontSize="11" 
@@ -433,7 +440,31 @@
                             </Border>
                             
                             <!-- Data Section -->
-                            <TextBlock Text="Data Management" 
+                            <TextBlock Text="Database (Triggers)" 
+                                       FontSize="11" 
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource TextMutedBrush}"
+                                       Margin="0,0,0,10"/>
+                            
+                            <Border Background="{DynamicResource SurfaceBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="8"
+                                    Padding="16"
+                                    Margin="0,0,0,20">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Export" 
+                                            Style="{StaticResource SecondaryButton}"
+                                            Click="Export_Click"
+                                            Margin="0,0,10,0"/>
+                                    <Button Content="Import" 
+                                            Style="{StaticResource SecondaryButton}"
+                                            Click="Import_Click"/>
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Settings and Database Location Section -->
+                            <TextBlock Text="Settings and Database Location" 
                                        FontSize="11" 
                                        FontWeight="SemiBold"
                                        Foreground="{DynamicResource TextMutedBrush}"
@@ -446,35 +477,29 @@
                                     Padding="16"
                                     Margin="0,0,0,20">
                                 <StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                        <Button Content="Export" 
-                                                Style="{StaticResource SecondaryButton}"
-                                                Click="Export_Click"
-                                                Margin="0,0,10,0"/>
-                                        <Button Content="Import" 
-                                                Style="{StaticResource SecondaryButton}"
-                                                Click="Import_Click"/>
-                                    </StackPanel>
-                                    
-                                    <TextBlock Text="Database Location" 
+                                    <TextBlock Text="Settings file (settings.json)" 
                                                Foreground="{DynamicResource TextMutedBrush}" 
                                                FontSize="11"
-                                               FontWeight="SemiBold"
-                                               Margin="0,0,0,8"/>
+                                               Margin="0,0,0,4"/>
+                                    <TextBox x:Name="SettingsPathTextBox" 
+                                             Style="{StaticResource ModernTextBox}"
+                                             IsReadOnly="True"
+                                             FontSize="11"
+                                             Margin="0,0,0,12"/>
+                                    
+                                    <TextBlock Text="Database file (triggers.json)" 
+                                               Foreground="{DynamicResource TextMutedBrush}" 
+                                               FontSize="11"
+                                               Margin="0,0,0,4"/>
                                     <TextBox x:Name="DatabaseLocationText" 
                                              Style="{StaticResource ModernTextBox}"
                                              IsReadOnly="True"
                                              FontSize="11"
-                                             Margin="0,0,0,10"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="Browse" 
-                                                Style="{StaticResource SecondaryButton}"
-                                                Click="BrowseDatabase_Click"
-                                                Margin="0,0,10,0"/>
-                                        <Button Content="Reset to Default" 
-                                                Style="{StaticResource SecondaryButton}"
-                                                Click="ResetDatabaseLocation_Click"/>
-                                    </StackPanel>
+                                             Margin="0,0,0,12"/>
+                                    
+                                    <Button Content="Change Location..." 
+                                            Style="{StaticResource SecondaryButton}"
+                                            Click="ChangeLocationButton_Click"/>
                                 </StackPanel>
                             </Border>
 							<!-- About Section -->
@@ -495,8 +520,6 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -521,30 +544,6 @@
                                             dayeggpi
                                         </Hyperlink>
                                     </TextBlock>
-                                    
-                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Database" 
-                                               Foreground="{DynamicResource TextMutedBrush}" FontSize="12" Margin="0,6,0,0"/>
-                                    <TextBox Grid.Row="3" Grid.Column="1" 
-                                             x:Name="DatabasePathText"
-                                             IsReadOnly="True"
-                                             Background="Transparent"
-                                             BorderThickness="0"
-                                             Foreground="{DynamicResource TextBrush}"
-                                             FontSize="11"
-                                             TextWrapping="Wrap"
-                                             Margin="0,6,0,0"/>
-                                    
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Settings" 
-                                               Foreground="{DynamicResource TextMutedBrush}" FontSize="12" Margin="0,6,0,0"/>
-                                    <TextBox Grid.Row="4" Grid.Column="1" 
-                                             x:Name="SettingsPathText"
-                                             IsReadOnly="True"
-                                             Background="Transparent"
-                                             BorderThickness="0"
-                                             Foreground="{DynamicResource TextBrush}"
-                                             FontSize="11"
-                                             TextWrapping="Wrap"
-                                             Margin="0,6,0,0"/>
                                 </Grid>
                             </Border>
                             
